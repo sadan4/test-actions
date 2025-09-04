@@ -5,6 +5,9 @@ on:
 jobs:
     sort:
         runs-on: ubuntu-latest
+        permissions:
+            repository-projects: write
+            pull-requests: read
         steps:
             - name: guh
               env:    
