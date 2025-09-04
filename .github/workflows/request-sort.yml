@@ -21,7 +21,6 @@ jobs:
 
 
                   echo "Pull request #$pr_num reviewed by $reviewer"
-                  cat <(gh pr view --repo $owner/$repo $pr_num --json projectItems)
                   pr_project_entry_json=$(gh pr view --repo $owner/$repo $pr_num --json projectItems -q ".projectItems[0]")
                   cur_status_name=$(echo "$pr_project_entry_json" | jq -r ".status.name")
                   if [[ "$cur_status_name" == "In Review" ]]; then
@@ -31,7 +30,6 @@ jobs:
                   project_title=$(echo "$pr_project_entry_json" | jq -r ".title")
                   if [[ -z $project_title ]]; then
                     echo "No project item found for PR #$pr_num"
-                    echo "json: $pr_project_entry_json"
                     exit 0
                   fi
                   echo "Project item title: $project_title"
@@ -47,5 +45,5 @@ jobs:
                   item_json=$(gh project item-list ${project_number} --owner $owner --format json -q ".items[] | select(.content.number == ${pr_num})")
                   item_id=$(echo "$item_json" | jq -r ".id")
 
-                  gh project item-edit --id ${item_id} --project_id ${project_id} --field-id ${status_field_id} --single-select-option-id ${in_progress_id}
+                  gh project item-edit --id ${item_id} --project-id ${project_id} --field-id ${status_field_id} --single-select-option-id ${in_progress_id}
 
