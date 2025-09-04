@@ -26,6 +26,7 @@ jobs:
                   project_title=$(echo "$pr_project_entry_json" | jq -r ".title")
                   if [[ -z $project_title ]]; then
                     echo "No project item found for PR #$pr_num"
+                    echo "json: $pr_project_entry_json"
                     exit 0
                   fi
                   echo "Project item title: $project_title"
