@@ -10,3 +10,4 @@ jobs:
               run: |
                   echo "GUH"
                   printenv
+                  echo ${{ github.event.sender }}
