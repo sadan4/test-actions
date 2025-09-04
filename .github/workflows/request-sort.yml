@@ -18,6 +18,7 @@ jobs:
 
 
                   echo "Pull request #$pr_num reviewed by $reviewer"
+                  cat <(gh pr view --repo $owner/$repo $pr_num --json projectItems)
                   pr_project_entry_json=$(gh pr view --repo $owner/$repo $pr_num --json projectItems -q ".projectItems[0]")
                   cur_status_name=$(echo "$pr_project_entry_json" | jq -r ".status.name")
                   if [[ "$cur_status_name" == "In Review" ]]; then
