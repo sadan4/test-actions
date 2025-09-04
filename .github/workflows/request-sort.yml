@@ -9,5 +9,5 @@ jobs:
             - name: guh
               run: |
                   echo "GUH"
-                  echo reviewer name ${{ toJSON(github.event.sender) }}
+                  echo reviewer name '${{ toJSON(github.event.sender) }}'
                   echo pr number ${{ github.event.pull_request.number }}
