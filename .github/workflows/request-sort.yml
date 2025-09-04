@@ -8,7 +8,7 @@ jobs:
         steps:
             - name: guh
               env:    
-                  gh_token: ${{ github.token }}
+                  GH_TOKEN: ${{ github.token }}
               run: |
                   pr_num=${{ github.event.pull_request.number }}
                   reviewer=${{ github.event.sender.login }}
