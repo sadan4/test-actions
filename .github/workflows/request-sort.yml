@@ -1,0 +1,12 @@
+on:
+    pull_request_review: 
+        types: [submitted]
+
+jobs:
+    sort:
+        runs-on: ubuntu-latest
+        steps:
+            - name: guh
+              run: |
+                  echo "GUH"
+                  printenv
