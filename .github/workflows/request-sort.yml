@@ -9,5 +9,5 @@ jobs:
             - name: guh
               run: |
                   echo "GUH"
-                  printenv
-                  echo ${{ github.event.sender }}
+                  echo reviewer name ${{ github.event.sender.name }}
+                  echo pr number ${{ github.event.pull_request.number }}
